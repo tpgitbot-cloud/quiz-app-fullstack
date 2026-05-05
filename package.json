@@ -1,0 +1,25 @@
+{
+  "name": "quiz-app",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "dev:full": "concurrently \"node local-server.js\" \"vite\"",
+    "build": "vite build",
+    "preview": "vite preview",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "@supabase/supabase-js": "^2.103.0",
+    "animejs": "^3.2.1",
+    "canvas-confetti": "^1.9.2",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "mammoth": "^1.6.0"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "vite": "^6.0.1"
+  }
+}
