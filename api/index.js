@@ -1,6 +1,7 @@
 import express from 'express';
 import { createClient } from '@supabase/supabase-js';
 import dotenv from 'dotenv';
+import quizzesRouter from './quizzes.js';
 
 dotenv.config();
 
@@ -33,11 +34,20 @@ app.get('/api/status', (req, res) => {
     });
 });
 
+// ===== Quiz Routes (NEW) =====
+app.use('/api', quizzesRouter);
+
+// ===== Results Routes =====
 app.get('/api/results', checkSupabase, async (req, res) => {
     try {
-        const { data, error } = await supabase
-            .from('results')
-            .select('*')
+        const { quizId } = req.query;
+        let query = supabase.from('results').select('*');
+        
+        if (quizId) {
+            query = query.eq('quiz_id', quizId);
+        }
+        
+        const { data, error } = await query
             .order('timestamp', { ascending: false });
         
         if (error) throw error;
@@ -74,11 +84,17 @@ app.delete('/api/results', checkSupabase, async (req, res) => {
     }
 });
 
+// ===== Violations Routes =====
 app.get('/api/violations', checkSupabase, async (req, res) => {
     try {
-        const { data, error } = await supabase
-            .from('violations')
-            .select('*')
+        const { quizId } = req.query;
+        let query = supabase.from('violations').select('*');
+        
+        if (quizId) {
+            query = query.eq('quiz_id', quizId);
+        }
+        
+        const { data, error } = await query
             .order('timestamp', { ascending: false });
         
         if (error) throw error;
@@ -116,6 +132,3 @@ app.delete('/api/violations', checkSupabase, async (req, res) => {
 });
 
 export default app;
-
-
-
