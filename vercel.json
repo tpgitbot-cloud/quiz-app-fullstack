@@ -6,9 +6,12 @@
       "destination": "/api/index.js"
     },
     {
+      "source": "/quiz/([a-zA-Z0-9_-]+)",
+      "destination": "/index.html"
+    },
+    {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ]
 }
-
