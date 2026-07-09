@@ -1,0 +1,13 @@
+{
+  "appId": "com.example.quizapp",
+  "appName": "quiz-app",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "plugins": {
+    "SplashScreen": {
+      "launchShowDuration": 0
+    }
+  }
+}
