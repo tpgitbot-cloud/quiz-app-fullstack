@@ -16,7 +16,9 @@
     "canvas-confetti": "^1.9.2",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
-    "mammoth": "^1.6.0"
+    "mammoth": "^1.6.0",
+    "lz-string": "^1.4.4",
+    "qrcode": "^1.5.1"
   },
   "devDependencies": {
     "concurrently": "^9.2.1",
